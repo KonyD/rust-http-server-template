@@ -18,7 +18,7 @@ fn handle_connection(mut stream: TcpStream) {
     let buf_reader = BufReader::new(&mut stream);
     let request_line = buf_reader.lines().next().unwrap().unwrap();
 
-    let (status_line, filename) = if request_line == "GET / HTTP/1.1" {
+    let (status_line, filename) = if request_line == "GET /hello HTTP/1.1" {
         ("HTTP/1.1 200 OK", "./routes/hello.html")
     } else {
         ("HTTP/1.1 404 NOT FOUND", "./routes/404.html")
